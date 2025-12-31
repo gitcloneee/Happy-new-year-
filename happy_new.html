@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 | To My MVP Bestie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&family=Handlee&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bestie-pink: #ff85a1;
+            --bestie-yellow: #f9f871;
+            --bestie-blue: #9decf1;
+            --paper: #fffcf2;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #ffe5ec;
+            background-image: radial-gradient(#ffc2d1 1px, transparent 1px);
+            background-size: 25px 25px;
+            color: #4a1c2c;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .font-hand { font-family: 'Handlee', cursive; }
+        .font-marker { font-family: 'Permanent Marker', cursive; }
+
+        /* Animations */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .wiggle { animation: wiggle 0.5s infinite; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        .float { animation: float 4s ease-in-out infinite; }
+
+        .scene {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .scene.active { display: flex; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Scrapbook Elements */
+        .tape {
+            background: rgba(157, 236, 241, 0.6);
+            backdrop-filter: blur(2px);
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .paper {
+            background: var(--paper);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .btn-funny {
+            background: #ff4d6d;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 8px 0 #c9184a;
+            transition: 0.1s;
+        }
+        .btn-funny:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #c9184a;
+        }
+
+        .sticker {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scene 0: The Chaos Intro -->
+    <section id="scene-0" class="scene active">
+        <div class="relative">
+            <div class="sticker float" style="top:-40px; left:-40px;">💖</div>
+            <div class="sticker float" style="bottom:-30px; right:-30px; animation-delay: 1s;">✨</div>
+            <div class="paper p-8 text-center transform -rotate-2">
+                <div class="tape" style="top:-15px; left:30%; transform: rotate(-5deg);"></div>
+                <h2 class="text-xl opacity-60 mb-2 uppercase tracking-widest">Ur Annual Update</h2>
+                <h1 class="text-7xl font-marker text-[#ff4d6d]">2026</h1>
+                <p class="font-hand text-2xl mt-4">Bestie Edition 💅</p>
+                <div class="mt-8 bg-gray-100 rounded-lg p-4 flex items-center gap-4">
+                    <div class="text-5xl wiggle">🐱</div>
+                    <div class="text-left">
+                        <p class="font-bold">Status: Obsessed</p>
+                        <p class="text-xs opacity-50">Authorized by: Your fav human</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="next(1)" class="btn-funny mt-12 uppercase">Enter My Brain</button>
+    </section>
+
+    <!-- Scene 1: The "Bestie Award" -->
+    <section id="scene-1" class="scene">
+        <div class="paper p-8 max-w-sm w-full transform rotate-1 text-center border-4 border-dashed border-pink-300">
+            <h2 class="font-marker text-3xl text-pink-600 mb-6 uppercase">Certified 2025 MVP</h2>
+            <div class="text-7xl mb-6">🏆</div>
+            <p class="text-xl mb-4">Awarded to my Bestie for:</p>
+            <ul class="space-y-2 text-left bg-pink-50 p-4 rounded-xl font-hand text-lg">
+                <li>✅ Dealing with my mood swings</li>
+                <li>✅ Teaching me how to actually be a human</li>
+                <li>✅ Supporting me when I was 1% drama and 99% mess</li>
+                <li>✅ Being the smartest person I know (ugh)</li>
+            </ul>
+            <button onclick="next(2)" class="w-full mt-8 py-3 bg-pink-500 text-white rounded-full font-bold shadow-lg">CLAIM YOUR PRIZE ➔</button>
+        </div>
+    </section>
+
+    <!-- Scene 2: 2026 Goals (The Real Version) -->
+    <section id="scene-2" class="scene">
+        <div class="paper p-10 w-full max-w-xs transform -rotate-1">
+            <div class="tape" style="top:-15px; right:10px; width:60px; background:rgba(249, 248, 113, 0.6);"></div>
+            <h2 class="font-hand text-4xl mb-6 underline decoration-pink-300">Our 2026 Vibe Check</h2>
+            <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center">1</div>
+                    <p class="font-medium text-lg">More gossip sessions ☕️</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">2</div>
+                    <p class="font-medium text-lg">You teaching me more stuff (pls)</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">3</div>
+                    <p class="font-medium text-lg">Actually finishing a TV show</p>
+                </div>
+            </div>
+            <button onclick="next(3)" class="btn-funny w-full mt-12">I'M HYPED</button>
+        </div>
+    </section>
+
+    <!-- Scene 3: The "Brain" Playlist -->
+    <section id="scene-3" class="scene">
+        <div class="relative w-80">
+            <div class="bg-gray-800 p-6 rounded-3xl shadow-2xl">
+                <div class="bg-blue-400 h-12 w-full mb-4 rounded-xl flex items-center justify-between px-4">
+                    <span class="text-white text-xs font-bold">BESTIE RADIO</span>
+                    <div class="flex gap-1">
+                        <div class="w-1 h-4 bg-white/50 rounded-full"></div>
+                        <div class="w-1 h-6 bg-white rounded-full"></div>
+                        <div class="w-1 h-3 bg-white/50 rounded-full"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="text-6xl mb-4 wiggle">💃</div>
+                    <h3 class="font-bold text-xl mb-1">Main Character Energy</h3>
+                    <p class="text-xs text-blue-500 font-bold uppercase tracking-widest">Artist: You, obviously</p>
+                </div>
+                <div class="mt-6 flex items-center justify-center gap-8">
+                    <button class="text-white text-2xl">⏮</button>
+                    <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl">▶️</button>
+                    <button class="text-white text-2xl">⏭</button>
+                </div>
+            </div>
+            <div class="absolute -bottom-10 -right-5 transform rotate-12 bg-yellow-300 text-black px-4 py-2 font-marker">HITS DIFFERENT!</div>
+        </div>
+        <button onclick="next(4)" class="mt-20 opacity-40 hover:opacity-100 text-sm font-bold border-b border-black">NEXT: THE REAL TALK ➔</button>
+    </section>
+
+    <!-- Scene 4: The Heartfelt Reveal -->
+    <section id="scene-4" class="scene">
+        <div class="relative w-72 h-96 group perspective" onclick="this.classList.toggle('flipped')">
+            <div class="absolute inset-0 bg-white p-8 paper flex flex-col items-center justify-center text-center transition-all duration-700 backface-hidden" id="card-front">
+                <div class="text-7xl mb-6 float">🎁</div>
+                <h2 class="font-marker text-2xl mb-2 text-pink-600">A Small Secret...</h2>
+                <p class="font-hand text-xl opacity-60">Tap to reveal what I really think</p>
+            </div>
+            <div class="absolute inset-0 bg-pink-100 p-8 paper flex items-center justify-center text-center opacity-0 transition-all duration-700" id="card-back">
+                <p class="font-hand text-3xl leading-relaxed text-pink-900">
+                    "2025 was 10/10 only because you were in it!" 💖
+                </p>
+            </div>
+        </div>
+        <button onclick="next(5)" class="btn-funny mt-16">The Special Note</button>
+    </section>
+
+    <!-- Scene 5: Loading the Best Year -->
+    <section id="scene-5" class="scene">
+        <div class="text-center w-64">
+            <div class="text-6xl mb-6 wiggle">⚙️</div>
+            <h2 class="font-marker text-2xl mb-2">Preparing 2026...</h2>
+            <p class="text-xs mb-4 opacity-50 uppercase tracking-widest">Optimizing for Maximum Fun</p>
+            <div class="w-full h-6 bg-white rounded-full p-1 border-2 border-pink-400">
+                <div id="loader" class="h-full bg-pink-400 w-0 rounded-full transition-all"></div>
+            </div>
+            <p id="loader-text" class="mt-2 font-hand font-bold text-xl">0%</p>
+        </div>
+    </section>
+
+    <!-- Scene 6: The Ultimate Letter -->
+    <section id="scene-6" class="scene">
+        <div class="paper p-10 max-w-sm w-full transform rotate-1 relative">
+            <div class="tape" style="top:-15px; left:10px; transform: rotate(-10deg); background: rgba(255, 77, 109, 0.3);"></div>
+            <div class="tape" style="top:-5px; right:-20px; transform: rotate(30deg); width:60px;"></div>
+            
+            <h2 class="font-marker text-2xl text-pink-600 mb-6">Dear Bestie,</h2>
+            
+            <div class="space-y-4 font-hand text-xl leading-relaxed text-pink-900 italic">
+                <p>I wanted to end this journey by saying a huge **Thank You**.</p>
+                <p>2025 would have been just another year if you weren't there to make it special. Thank you for being my rock and my therapist (for free lol).</p>
+                <p class="font-bold text-pink-600 not-italic">"Thank you for teaching me things I didn't know I needed, for supporting me when I was down, and for always prioritizing my chaos."</p>
+                <p>You're more than a best friend; you're my official Life Coach. Get ready, because in 2026, we're taking over the world! 🌍✨</p>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-dashed border-pink-200 text-center">
+                <p class="text-xs uppercase font-bold tracking-tighter opacity-30 mb-4">Sealed with infinite love</p>
+                <button onclick="location.reload()" class="btn-funny scale-90">RESTART OUR STORY</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function next(id) {
+            document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('scene-' + id);
+            target.classList.add('active');
+            
+            if (id === 5) {
+                let p = 0;
+                const load = setInterval(() => {
+                    p += Math.floor(Math.random() * 25) + 1;
+                    if (p >= 100) {
+                        p = 100;
+                        clearInterval(load);
+                        setTimeout(() => next(6), 800);
+                    }
+                    document.getElementById('loader').style.width = p + '%';
+                    document.getElementById('loader-text').textContent = p + '%';
+                }, 300);
+            }
+        }
+
+        // Card Flip Logic for Scene 4
+        function flipCard() {
+            const front = document.getElementById('card-front');
+            const back = document.getElementById('card-back');
+            if (front.style.opacity === '0') {
+                front.style.opacity = '1';
+                back.style.opacity = '0';
+            } else {
+                front.style.opacity = '0';
+                back.style.opacity = '1';
+            }
+        }
+
+        // Add "flipped" logic
+        document.querySelector('.perspective').addEventListener('click', function() {
+            const front = document.getElementById('card-front');
+            const back = document.getElementById('card-back');
+            if (this.classList.contains('is-flipped')) {
+                front.style.opacity = "1";
+                back.style.opacity = "0";
+                this.classList.remove('is-flipped');
+            } else {
+                front.style.opacity = "0";
+                back.style.opacity = "1";
+                this.classList.add('is-flipped');
+            }
+        });
+    </script>
+</body>
+</html>
