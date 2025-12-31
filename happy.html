@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 | The Bestie Odyssey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&family=Gloria+Hallelujah&family=Montserrat:ital,wght@0,900;1,900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --p1: #ffafcc; /* Cotton Candy */
+            --p2: #a2d2ff; /* Sky Blue */
+            --p3: #ffc8dd; /* Pink */
+            --p4: #bde0fe; /* Light Blue */
+            --gold: #ffb703;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #f8f9fa;
+            color: #2d3436;
+            overflow-x: hidden;
+            margin: 0;
+            user-select: none;
+        }
+
+        .font-hand { font-family: 'Gloria Hallelujah', cursive; }
+        .font-display { font-family: 'Montserrat', sans-serif; font-weight: 900; font-style: italic; }
+        .font-write { font-family: 'Caveat', cursive; }
+
+        /* Background Graphics */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-color: #fdf0f6;
+            background-image:  radial-gradient(#ffafcc 1.2px, transparent 1.2px), radial-gradient(#ffafcc 1.2px, #fdf0f6 1.2px);
+            background-size: 48px 48px;
+            background-position: 0 0, 24px 24px;
+            opacity: 0.4;
+        }
+
+        /* Scene System */
+        .scene {
+            position: fixed;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .scene.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            z-index: 10;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 3px solid #000;
+            box-shadow: 8px 8px 0px #000;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 380px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Buttons */
+        .btn-bounce {
+            background: #ff477e;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 99px;
+            font-weight: 700;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-bounce:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        /* Floating Stickers */
+        .sticker {
+            position: absolute;
+            pointer-events: none;
+            z-index: 20;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--r)); }
+            50% { transform: translateY(-15px) rotate(calc(var(--r) + 5deg)); }
+        }
+
+        /* Custom Progress */
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #ff477e;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff477e;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <!-- START: The Hype Intro -->
+    <section id="scene-0" class="scene active">
+        <div class="sticker float" style="top:10%; left:10%; --r:-10deg; font-size:4rem;">🦋</div>
+        <div class="sticker float" style="bottom:10%; right:10%; --r:15deg; font-size:4rem;">🍭</div>
+        
+        <h2 class="font-display text-2xl text-[#ff477e] mb-2 uppercase italic tracking-tighter">Warning: High Levels of Love</h2>
+        <h1 class="font-display text-8xl md:text-9xl text-white drop-shadow-[6px_6px_0px_#000] mb-8">2026</h1>
+        
+        <div class="glass-card text-center mb-8 rotate-[-2deg]">
+            <p class="font-hand text-xl">System Update: Analyzing the world's best friendship...</p>
+            <div class="flex justify-center gap-2 mt-4">
+                <span class="w-3 h-3 bg-red-400 rounded-full animate-bounce"></span>
+                <span class="w-3 h-3 bg-blue-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                <span class="w-3 h-3 bg-yellow-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+            </div>
+        </div>
+
+        <button onclick="next(1)" class="btn-bounce">Begin the Odyssey</button>
+    </section>
+
+    <!-- 1. The "Friendship Wrapped" -->
+    <section id="scene-1" class="scene">
+        <div class="glass-card bg-pink-50">
+            <h2 class="font-display text-3xl mb-6 italic underline">2025 WRAPPED</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-4 border-2 border-black rounded-xl">
+                    <p class="text-xs font-bold uppercase opacity-40">Your Top Human</p>
+                    <p class="text-2xl font-bold">It's You. Always.</p>
+                </div>
+                <div class="bg-blue-100 p-4 border-2 border-black rounded-xl">
+                    <p class="text-xs font-bold uppercase opacity-40">Minutes Spent Supporting Me</p>
+                    <p class="text-2xl font-bold">525,600+ <span class="text-sm">(Basically 24/7)</span></p>
+                </div>
+                <div class="bg-yellow-100 p-4 border-2 border-black rounded-xl">
+                    <p class="text-xs font-bold uppercase opacity-40">Bestie Tier</p>
+                    <p class="text-2xl font-bold">God Mode / Elite 👑</p>
+                </div>
+            </div>
+            <button onclick="next(2)" class="w-full mt-8 btn-bounce text-sm">See Why You're the Best</button>
+        </div>
+    </section>
+
+    <!-- 2. The Professor Report Card -->
+    <section id="scene-2" class="scene">
+        <div class="glass-card rotate-[1deg]">
+            <div class="absolute -top-6 -left-6 text-5xl">🎓</div>
+            <h2 class="font-hand text-2xl mb-2 text-center">Professor Bestie's</h2>
+            <h3 class="font-display text-xl mb-6 text-center italic">2025 Teaching Report</h3>
+            
+            <div class="space-y-4 font-bold">
+                <div class="flex justify-between items-center border-b-2 border-black pb-2">
+                    <span>Wisdom & Advice</span>
+                    <span class="text-[#ff477e]">A+++</span>
+                </div>
+                <div class="flex justify-between items-center border-b-2 border-black pb-2">
+                    <span>Patience with my Drama</span>
+                    <span class="text-[#ff477e]">Infinite</span>
+                </div>
+                <div class="flex justify-between items-center border-b-2 border-black pb-2">
+                    <span>Teaching me to be Cool</span>
+                    <span class="text-[#ff477e]">Distinction</span>
+                </div>
+                <div class="flex justify-between items-center border-b-2 border-black pb-2">
+                    <span>Overall Vibe</span>
+                    <span class="text-[#ff477e]">Legendary</span>
+                </div>
+            </div>
+            
+            <p class="mt-6 text-xs italic opacity-60 text-center">"Student's Note: I'd be failing at life if you weren't my teacher. Thanks for being the smartest person in the room."</p>
+            <button onclick="next(3)" class="w-full mt-8 btn-bounce text-sm">Next Page</button>
+        </div>
+    </section>
+
+    <!-- 3. The "Priority" Check -->
+    <section id="scene-3" class="scene">
+        <div class="text-center mb-10">
+            <h2 class="font-display text-4xl mb-4 italic">PRIORITY LEVEL:</h2>
+            <div class="flex justify-center items-center gap-4">
+                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                <div class="text-6xl font-display text-white drop-shadow-[4px_4px_0px_#000]">100%</div>
+                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+            </div>
+        </div>
+        <div class="glass-card text-center">
+            <p class="text-lg font-medium mb-6">In 2026, you are the VIP. No queues, no waiting, just straight to the top of my list.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-pink-100 rounded-lg border-2 border-black text-xs font-bold uppercase">Priority Chatting</div>
+                <div class="p-4 bg-blue-100 rounded-lg border-2 border-black text-xs font-bold uppercase">Priority Crying</div>
+                <div class="p-4 bg-yellow-100 rounded-lg border-2 border-black text-xs font-bold uppercase">Priority Laughing</div>
+                <div class="p-4 bg-purple-100 rounded-lg border-2 border-black text-xs font-bold uppercase">Priority Everything</div>
+            </div>
+            <button onclick="next(4)" class="w-full mt-8 btn-bounce text-sm">Open the Memory Vault</button>
+        </div>
+    </section>
+
+    <!-- 4. The Interactive Chat Memories -->
+    <section id="scene-4" class="scene">
+        <div class="glass-card p-4 h-[450px] flex flex-col">
+            <div class="bg-black text-white p-3 rounded-t-xl font-bold flex items-center justify-between">
+                <span>Bestie Support Hotline</span>
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 font-hand text-sm">
+                <div class="bg-pink-200 p-3 rounded-2xl rounded-bl-none border border-black max-w-[80%]">
+                    Me: "Help, 2025 is being weird!"
+                </div>
+                <div class="bg-white p-3 rounded-2xl rounded-br-none border border-black max-w-[80%] self-end">
+                    Bestie: "Don't worry, I'm here. Let me teach you how to handle this like a pro."
+                </div>
+                <div class="bg-pink-200 p-3 rounded-2xl rounded-bl-none border border-black max-w-[80%]">
+                    Me: "Why are you so smart?"
+                </div>
+                <div class="bg-white p-3 rounded-2xl rounded-br-none border border-black max-w-[80%] self-end">
+                    Bestie: "It's a gift. Now let's go rule the world."
+                </div>
+            </div>
+            <button onclick="next(5)" class="w-full mt-4 btn-bounce py-2 text-xs">Aww, Move On!</button>
+        </div>
+    </section>
+
+    <!-- 5. The Choice (Funny Interactive) -->
+    <section id="scene-5" class="scene">
+        <h2 class="font-display text-2xl mb-8 italic text-center">QUIZ: How much do I appreciate you?</h2>
+        <div class="space-y-4 w-full max-w-xs">
+            <button onclick="alert('WRONG. It is much more than that!');" class="w-full glass-card p-4 hover:bg-red-100 transition-colors text-left font-bold">A) A little bit</button>
+            <button onclick="alert('CLOSE. But keep going!');" class="w-full glass-card p-4 hover:bg-yellow-100 transition-colors text-left font-bold">B) A whole lot</button>
+            <button onclick="next(6)" class="w-full glass-card p-4 hover:bg-green-100 transition-colors text-left font-bold">C) To infinity and back x100000</button>
+        </div>
+    </section>
+
+    <!-- 6. Loading The 2026 Vibes -->
+    <section id="scene-6" class="scene">
+        <div class="text-center w-full max-w-sm px-8">
+            <div class="text-7xl mb-8">🚀</div>
+            <h2 class="font-display text-2xl mb-4 italic">Pre-gaming for 2026</h2>
+            <p class="font-hand opacity-60 mb-6">Downloading more core memories with you...</p>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+            <p id="progress-text" class="font-display text-sm italic">LOADING: 0%</p>
+        </div>
+    </section>
+
+    <!-- 7. The Final Heartfelt Letter -->
+    <section id="scene-7" class="scene">
+        <div class="glass-card max-w-sm rotate-[-1deg]">
+            <div class="tape" style="top:-15px; left:30%; transform: rotate(-3deg); background: rgba(255, 175, 204, 0.8);"></div>
+            <h2 class="font-write text-4xl text-pink-600 mb-6">Hey MVP,</h2>
+            <div class="font-write text-2xl leading-snug space-y-4 text-gray-700">
+                <p>I know I joke around a lot, but I truly wanted to say: **Thank You**.</p>
+                <p>2025 was a highlight reel only because you were in it. Thank you for supporting me when things got heavy and for teaching me so much along the way.</p>
+                <p class="font-bold text-black border-l-4 border-pink-400 pl-4 italic">
+                    "You make me feel prioritized, heard, and actually smart (even when I'm not)."
+                </p>
+                <p>You’re my favorite teacher, my best supporter, and my #1 human. Let's make 2026 our most chaotic and beautiful year yet.</p>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="font-hand text-xs opacity-40 uppercase tracking-widest mb-4">Click to Seal the Year</p>
+                <button onclick="next(8)" class="btn-bounce w-full">Seal it with a ❤️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. THE END: Party Mode -->
+    <section id="scene-8" class="scene">
+        <div id="confetti-container"></div>
+        <div class="text-center">
+            <h1 class="font-display text-6xl text-white drop-shadow-[5px_5px_0px_#ff477e] mb-4">HAPPY 2026!</h1>
+            <h2 class="font-hand text-2xl mb-12">I love you, Bestie! 🍭✨</h2>
+            <div class="text-8xl mb-12 animate-bounce">👯‍♀️</div>
+            <button onclick="location.reload()" class="btn-bounce">Restart Our Journey</button>
+        </div>
+    </section>
+
+    <script>
+        function next(id) {
+            // Scene Transition
+            document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById('scene-' + id);
+            target.classList.add('active');
+
+            // Logic for Loading Scene
+            if (id === 6) {
+                let p = 0;
+                const bar = document.getElementById('progress-bar');
+                const txt = document.getElementById('progress-text');
+                const interval = setInterval(() => {
+                    p += Math.floor(Math.random() * 10);
+                    if (p >= 100) {
+                        p = 100;
+                        clearInterval(interval);
+                        setTimeout(() => next(7), 800);
+                    }
+                    bar.style.width = p + '%';
+                    txt.innerText = `LOADING VIBES: ${p}%`;
+                }, 150);
+            }
+
+            // Logic for Confetti
+            if (id === 8) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ffafcc', '#a2d2ff', '#ffc8dd', '#bde0fe', '#ffb703'];
+            for (let i = 0; i < 50; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'confetti';
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                conf.style.animationDelay = Math.random() * 3 + 's';
+                conf.style.transform = `rotate(${Math.random() * 360}deg)`;
+                container.appendChild(conf);
+            }
+        }
+
+        // Add some random stickers on load
+        window.onload = () => {
+            const emojis = ['✨', '💖', '🍭', '🦋', '🧸', '🌈', '🍕', '🎀'];
+            for(let i=0; i<12; i++) {
+                const s = document.createElement('div');
+                s.className = 'sticker float';
+                s.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+                s.style.top = Math.random() * 90 + 'vh';
+                s.style.left = Math.random() * 90 + 'vw';
+                s.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                s.style.setProperty('--r', (Math.random() * 40 - 20) + 'deg');
+                s.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(s);
+            }
+        };
+    </script>
+</body>
+</html>
+
